@@ -1,9 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Download, Shield, Users, Zap } from "lucide-react";
+import { Download, Shield, Users, Zap, ChevronDown } from "lucide-react";
 
 const Index = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0d1117] text-white">
       {/* Hero Section */}
@@ -11,13 +18,16 @@ const Index = () => {
         <nav className="container mx-auto px-4 py-6 flex items-center justify-between">
           <h1 className="text-2xl font-bold text-purple-400">MatrixTools</h1>
           <div className="flex gap-4">
-            <Button variant="ghost" className="text-purple-400 hover:text-purple-300">Home</Button>
-            <Button variant="ghost" className="text-purple-400 hover:text-purple-300">Features</Button>
+            <Button variant="ghost" className="text-purple-400 hover:text-purple-300" onClick={() => scrollToSection('home')}>Home</Button>
+            <Button variant="ghost" className="text-purple-400 hover:text-purple-300" onClick={() => scrollToSection('features')}>Features</Button>
+            <Button variant="ghost" className="text-purple-400 hover:text-purple-300" onClick={() => scrollToSection('status')}>Status</Button>
+            <Button variant="ghost" className="text-purple-400 hover:text-purple-300" onClick={() => scrollToSection('pricing')}>Pricing</Button>
+            <Button variant="ghost" className="text-purple-400 hover:text-purple-300" onClick={() => scrollToSection('faq')}>FAQ</Button>
             <Button variant="ghost" className="text-purple-400 hover:text-purple-300">Download</Button>
           </div>
         </nav>
         
-        <div className="container mx-auto px-4 py-20 text-center">
+        <div id="home" className="container mx-auto px-4 py-20 text-center">
           <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
             Game Enhancement Tools
           </h2>
@@ -28,11 +38,16 @@ const Index = () => {
             Download Now
             <Download className="ml-2" />
           </Button>
+          <div className="mt-12">
+            <Button variant="ghost" onClick={() => scrollToSection('features')} className="text-purple-400 hover:text-purple-300 animate-bounce">
+              <ChevronDown className="h-8 w-8" />
+            </Button>
+          </div>
         </div>
       </header>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section id="features" className="container mx-auto px-4 py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card className="bg-[#161b22] border-purple-900/50">
             <CardHeader>
@@ -73,7 +88,7 @@ const Index = () => {
       </section>
 
       {/* Status Section */}
-      <section className="container mx-auto px-4 py-10">
+      <section id="status" className="container mx-auto px-4 py-20">
         <h3 className="text-2xl font-bold text-center mb-8 text-purple-400">Current Status</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {['Tool A', 'Tool B', 'Tool C', 'Tool D'].map((tool) => (
@@ -85,6 +100,74 @@ const Index = () => {
                 </Badge>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="container mx-auto px-4 py-20">
+        <h3 className="text-2xl font-bold text-center mb-8 text-purple-400">Pricing Plans</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Card className="bg-[#161b22] border-purple-900/50">
+            <CardHeader>
+              <CardTitle className="text-purple-400">Basic</CardTitle>
+            </CardHeader>
+            <CardContent className="text-gray-400">
+              <p className="text-3xl font-bold mb-4">Free</p>
+              <ul className="space-y-2">
+                <li>Basic features</li>
+                <li>Community support</li>
+                <li>Regular updates</li>
+              </ul>
+            </CardContent>
+          </Card>
+          <Card className="bg-[#161b22] border-purple-900/50 transform scale-105">
+            <CardHeader>
+              <CardTitle className="text-purple-400">Pro</CardTitle>
+            </CardHeader>
+            <CardContent className="text-gray-400">
+              <p className="text-3xl font-bold mb-4">$9.99</p>
+              <ul className="space-y-2">
+                <li>All basic features</li>
+                <li>Priority support</li>
+                <li>Advanced tools</li>
+              </ul>
+            </CardContent>
+          </Card>
+          <Card className="bg-[#161b22] border-purple-900/50">
+            <CardHeader>
+              <CardTitle className="text-purple-400">Enterprise</CardTitle>
+            </CardHeader>
+            <CardContent className="text-gray-400">
+              <p className="text-3xl font-bold mb-4">Contact Us</p>
+              <ul className="space-y-2">
+                <li>Custom solutions</li>
+                <li>24/7 support</li>
+                <li>Dedicated manager</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="container mx-auto px-4 py-20">
+        <h3 className="text-2xl font-bold text-center mb-8 text-purple-400">Frequently Asked Questions</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {[
+            { q: "Is it safe to use?", a: "Yes, our tools are regularly tested and updated for safety." },
+            { q: "How often do you update?", a: "We provide weekly updates to ensure compatibility." },
+            { q: "Do you offer refunds?", a: "Yes, we have a 30-day money-back guarantee." },
+            { q: "How can I get support?", a: "We offer 24/7 support through our community discord." }
+          ].map((faq, index) => (
+            <Card key={index} className="bg-[#161b22] border-purple-900/50">
+              <CardHeader>
+                <CardTitle className="text-purple-400">{faq.q}</CardTitle>
+              </CardHeader>
+              <CardContent className="text-gray-400">
+                <p>{faq.a}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
