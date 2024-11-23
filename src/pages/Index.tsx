@@ -16,7 +16,7 @@ const Index = () => {
       {/* Hero Section */}
       <header className="bg-gradient-to-b from-green-900/50 to-transparent">
         <nav className="container mx-auto px-4 py-6 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-green-400">MatrixTools</h1>
+          <h1 className="text-2xl font-bold text-green-400">08x Cheats</h1>
           <div className="flex gap-4">
             <Button variant="ghost" className="text-green-400 hover:text-green-300" onClick={() => scrollToSection('home')}>Home</Button>
             <Button variant="ghost" className="text-green-400 hover:text-green-300" onClick={() => scrollToSection('features')}>Features</Button>
@@ -175,7 +175,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-green-900/50 mt-20">
         <div className="container mx-auto px-4 py-6 text-center text-gray-400">
-          <p>© 2024 MatrixTools. All rights reserved.</p>
+          <p>© 2024 08x Cheats. All rights reserved.</p>
         </div>
       </footer>
     </div>
